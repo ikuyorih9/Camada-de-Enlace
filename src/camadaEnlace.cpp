@@ -3,7 +3,11 @@
 #include "../includes/camadaEnlace.hpp"
 
 
-
+/**
+ * Construtor da classe CamadaEnlace.
+ * @param quadro array com os bits dos quadros.
+ * @param tamanho tamanho do array.
+*/
 CamadaEnlace::CamadaEnlace(int * quadro, int tamanho){
     this->quadro = quadro;
     this->tamanho = tamanho;
