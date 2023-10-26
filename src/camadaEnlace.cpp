@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstring>
 #include "../includes/camadaEnlace.hpp"
+#include "../includes/funcoes.hpp"
 
 
 /**
@@ -35,9 +36,16 @@ bool CamadaEnlace::retornaSePar(){
 }
 
 void CamadaEnlace::controlaCRC(){
-    const int coeficientes [] = COEF_CRC;
+    int coeficientes [] = COEF_CRC;
     int * quadro = this->quadro;
     int tamanho = this->tamanho;
+
+    int * resto = retornaRestoDivisao(quadro, tamanho, coeficientes, 32);
+    imprimeArrayBits(resto, tamanho);
+    for(int i = 0; i < tamanho; i++){
+        quadro[i] ^= resto[i];
+    }
+    imprimeArrayBits(quadro, tamanho);
     
 }
 

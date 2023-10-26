@@ -13,15 +13,8 @@ void camadaAplicacao(){
 void camadaAplicacaoTransmissora(string mensagem){
     int * quadro = stringParaBits(mensagem);
     int tamanho = mensagem.length()*8;
-
-
-    cout << "QUADRO (" << tamanho << "): \n \t";
-    for(int i = 0; i < tamanho; i++)
-        cout << quadro[i];
-    cout << endl;
-    
-
+    imprimeArrayBits(quadro, tamanho);
     CamadaEnlace * camadaEnlace = new CamadaEnlace(quadro, tamanho);
-    camadaEnlace->controleErro(0);
+    camadaEnlace->controleErro(2);
     
 }
