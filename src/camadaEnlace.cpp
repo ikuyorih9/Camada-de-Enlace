@@ -34,6 +34,13 @@ bool CamadaEnlace::retornaSePar(){
     return par;
 }
 
+void CamadaEnlace::controlaCRC(){
+    const int coeficientes [] = COEF_CRC;
+    int * quadro = this->quadro;
+    int tamanho = this->tamanho;
+    
+}
+
 /**
  * Adiciona o bit de paridade ao fim do quadro. O controle pode considerar o número par ou ímpar de bits '1' no quadro, dependendo do parâmetro.
  * @param controlePar variável booleana que faz o controle par (true) ou o controle ímpar (false).
@@ -86,6 +93,7 @@ void CamadaEnlace::controleErro(int tipoControle){
         controlaParidade(false);
         break;
     case 2:
+        controlaCRC();
         break;
     }
 }
