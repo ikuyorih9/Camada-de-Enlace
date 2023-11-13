@@ -12,13 +12,24 @@ class CamadaEnlace{
         int * quadro;
         int tamanho;
 
-        bool retornaSePar();
-        void controlaParidade(bool controlePar);
+        bool retornaSePar(int * quadro, int tamanho);
+        //Transmissão.
+        void controlaParidadeTransmissao(bool controlePar);
         void controlaCRC();
+        //Recepção.
+        void controlaParidadeRecepcao(bool controlePar);
     public:
         CamadaEnlace(int * quadro, int tamanho);
+        void CamadaEnlaceDadosTransmissora();
         void configuraCamadaEnlace(int * quadro, int tamanho);
-        void controleErro(int tipoControle);
+        int * retornaQuadro();
+        int retornaTamanho();
+
+        //Transmissão.
+        void controleErroTransmissao(int tipoControle);
+
+        //Recepção.
+        void controleErroRecepcao(int tipoControle);
         
 };
 
