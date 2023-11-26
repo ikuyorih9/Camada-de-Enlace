@@ -49,5 +49,4 @@ void CamadaEnlace::controlaParidadeRecepcao(bool controlePar){
 ### Camada de aplicação receptora.
 
 
-
 ### Aplicação receptora.

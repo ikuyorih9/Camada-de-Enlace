@@ -1,6 +1,9 @@
 #include <iostream>
 #include <ctime>
 #include "../includes/meioTransmissao.hpp"
+#include "../includes/camadaAplicacao.hpp"
+#include "../includes/camadaEnlace.hpp"
+#include "../includes/funcoes.hpp"
 
 /**
  * Construtor da classe CamadaDeTransmissao.
@@ -23,8 +26,11 @@ void CamadaDeTransmissao::meioDeTransmissao(){
 
     //Para cada bit do quadro.
     for(int i = 0; i < tamanho; i++){
+        int porcentagemAleatoria = rand()%100 + 1;
+        //cout << "\tPorcentagem aleatoria: " << porcentagemAleatoria << endl;
+
         //Se a porcentagem aleatória for maior que a porcentagem de erros definida.
-        if((rand()%100 + 1) >= porcentagemErros)
+        if(porcentagemAleatoria >= porcentagemErros)
             fluxoBrutoBytesPontoB[i] = fluxoBrutoBytesPontoA[i]; //Copia o bit do quadro pro fluxo B.
         else
             fluxoBrutoBytesPontoB[i] = !fluxoBrutoBytesPontoA[i]; //Copia o inverso do bit do quadro pro fluxo B.
@@ -33,7 +39,13 @@ void CamadaDeTransmissao::meioDeTransmissao(){
     free(this->quadro);
     this->quadro = fluxoBrutoBytesPontoB; //Salva o novo quadro como o fluxo B
 
+    printf("APLICACAO COMUNICACAO - QUADRO: ");    
+    imprimeArrayBits(quadro, tamanho);
+
     //Chama camada de enlace receptora.
+    CamadaEnlace * camadaEnlaceReceptora = new CamadaEnlace(this->quadro, this->tamanho); //A camada de enlace deve ser só uma.
+    camadaEnlaceReceptora->controleErroRecepcao(CamadaEnlace::controle);
+
 }
 
 /**

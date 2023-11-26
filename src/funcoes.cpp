@@ -29,16 +29,33 @@ int * stringParaBits(string mensagem){
     return bits;
 }
 
-long int bitsParaInt(int * bits, int tam){
+/**
+ * Converte um array de bits em string.
+ * @param bits array de bits para converter.
+ * @param tamanho tamanho do array de bits.
+ * @return Retorna o array de bits em string.
+ * @note O tamanho precisa ser um múltiplo de 8 para que seja possível a conversão para bytes.
+*/
+string bitsParaString(int * bits, int tamanho){
     if(bits == NULL)
-        return -1;
+        return "";
     
-    long int valor = 0;
-    for(int i = tam-1; i >=0; i--){
-        valor += bits[i] * pow(2,i);
+    int tamanhoMensagem = tamanho/8;
+    char mensagem[tamanhoMensagem + 1];
+    for(int i = 0; i < tamanhoMensagem; i++){
+        int b = 0;
+        for(int j = i*8; j < i*8 + 8; j++){
+            b <<= 1;
+            b += bits[j];
+        }
+        mensagem[i] = (char)b;
+        mensagem[i+1] = '\0';
     }
-    return valor;
+
+    return (string) mensagem;
+
 }
+
 
 /**
  * Imprime o array de bits para debug.
@@ -90,19 +107,31 @@ void divisaoBinaria(int * dividendo, int * divisor, int tamDividendo, int tamDiv
     if(tamUtilDividendo < tamUtilDivisor)
         return;
 
-    //Procura o índice do LSB.
+    //Procura o índice do HSB.
     int inicio;
     for(inicio = 0; inicio < tamDividendo; inicio++){
         if(dividendo[inicio] == 1)
             break;
     }
 
-    //Se o LSB do dividendo for 1, o subtrai com o divisor.
+    //cout << "\t\t\tdividendo: ";
+    //imprimeArrayBits(dividendo, tamDividendo);
+    
+    //cout << "\t\t\tdivisor:   ";
+    //imprimeArrayBits(divisor, tamDivisor);
+
+
+    //Se o HSB do dividendo for 1, o subtrai com o divisor.
     if(dividendo[inicio] == 1){
         for(int i = inicio, j = 0; j < tamDivisor; i++, j++){
+            //cout << "\t\t\t\tXOR: " << dividendo[i] << "^" << divisor[j];
             dividendo[i] = dividendo[i]^divisor[j];
+            //cout << " = " << dividendo[i] << endl;
         }
     }
+
+    //cout << "iteracao da divisao: ";
+    //imprimeArrayBits(dividendo, tamDividendo);
 
     divisaoBinaria(dividendo, divisor, tamDividendo, tamDivisor);
 }
@@ -130,4 +159,23 @@ int * retornaRestoDivisao(int * dividendo, int tamDividendo, int * divisor, int 
     divisaoBinaria(resto, divisor, tamDividendo, tamDivisor); //Realiza, recursivamente, a divisão binária.
 
     return resto;
+}
+
+/**
+ * Verifica se o array de números binários está zerado.
+ * @param array array de números binários.
+ * @param tamanho tamanho do array.
+ * @return Retorna TRUE se está zerado e FALSE se não está.
+ * @note Caso o array não esteja alocado, o retorno é FALSE.
+*/
+bool arrayBinarioEstaZerado(int * array, int tamanho){
+    if(array == NULL)
+        return false;
+
+    for(int i = 0; i < tamanho; i++){
+        if(array[i] == 1)
+            return false;
+    }
+
+    return true;
 }
