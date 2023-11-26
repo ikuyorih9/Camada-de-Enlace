@@ -3,7 +3,7 @@
 
 using namespace std;
 
-void camadaAplicacao();
+void aplicacaoTransmissora();
 void camadaAplicacaoTransmissora(string mensagem);
 void camadaAplicacaoReceptora(int * quadro, int tamanho);
 void aplicacaoReceptora(string mensagem);

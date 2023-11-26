@@ -4,7 +4,7 @@
 #include "../includes/meioTransmissao.hpp"
 #include "../includes/funcoes.hpp"
 
-void camadaAplicacao(){
+void aplicacaoTransmissora(){
     string mensagem;
     cin >> mensagem;
     fflush(stdin);

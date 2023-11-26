@@ -8,8 +8,8 @@
 using namespace std;
 
 int main(){
-    cout << "Hello World" << endl;
-    camadaAplicacao();
+    //Inicia a camada de aplicação transmissora.
+    aplicacaoTransmissora();
 
     return 0;
 }
