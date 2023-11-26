@@ -4,6 +4,9 @@
 #include <malloc.h>
 #include <cmath>
 #include "../includes/funcoes.hpp"
+#include "../includes/log.hpp"
+
+using namespace std;
 
 /**
  * Transforma uma string em um array de bits.
@@ -11,10 +14,11 @@
  * @return (int) array com os bits da mensagem.
 */
 int * stringParaBits(string mensagem){
-    int * bits = (int*) malloc(sizeof(int) * mensagem.size()*8);
-
-    if(bits == NULL)
+    int * bits = new (nothrow) int[mensagem.size()*8];
+    if(bits == NULL){
+        Log::erroAlocacao("stringParaBits");
         return NULL;
+    }
 
     int * teste = bits;
     for(auto &c: mensagem){
@@ -37,8 +41,10 @@ int * stringParaBits(string mensagem){
  * @note O tamanho precisa ser um múltiplo de 8 para que seja possível a conversão para bytes.
 */
 string bitsParaString(int * bits, int tamanho){
-    if(bits == NULL)
+    if(bits == NULL){
+        Log::erroArrayVazio("bitsParaString");
         return "";
+    }
     
     int tamanhoMensagem = tamanho/8;
     char mensagem[tamanhoMensagem + 1];
@@ -56,13 +62,17 @@ string bitsParaString(int * bits, int tamanho){
 
 }
 
-
 /**
  * Imprime o array de bits para debug.
  * @param bits o array de bits a se imprimir.
  * @param tam o tamanho do array de bits.
 */
 void imprimeArrayBits(int * bits, int tam){
+    if(bits == NULL){
+        Log::erroArrayVazio("imprimeArrayBits");
+        return;
+    }
+        
     for(int i = 0; i < tam; i++)
         cout << bits[i];
     cout << endl;
@@ -114,13 +124,6 @@ void divisaoBinaria(int * dividendo, int * divisor, int tamDividendo, int tamDiv
             break;
     }
 
-    //cout << "\t\t\tdividendo: ";
-    //imprimeArrayBits(dividendo, tamDividendo);
-    
-    //cout << "\t\t\tdivisor:   ";
-    //imprimeArrayBits(divisor, tamDivisor);
-
-
     //Se o HSB do dividendo for 1, o subtrai com o divisor.
     if(dividendo[inicio] == 1){
         for(int i = inicio, j = 0; j < tamDivisor; i++, j++){
@@ -129,9 +132,6 @@ void divisaoBinaria(int * dividendo, int * divisor, int tamDividendo, int tamDiv
             //cout << " = " << dividendo[i] << endl;
         }
     }
-
-    //cout << "iteracao da divisao: ";
-    //imprimeArrayBits(dividendo, tamDividendo);
 
     divisaoBinaria(dividendo, divisor, tamDividendo, tamDivisor);
 }
@@ -148,9 +148,11 @@ void divisaoBinaria(int * dividendo, int * divisor, int tamDividendo, int tamDiv
 */
 int * retornaRestoDivisao(int * dividendo, int tamDividendo, int * divisor, int tamDivisor){
     //Aloca dinamicamente o resto e verifica se foi alocado corretamente.
-    int * resto = (int*) malloc(sizeof(int) * tamDividendo);
-    if(resto == NULL)
+    int * resto = new (nothrow) int[tamDividendo];
+    if(resto == NULL){
+        Log::erroAlocacao("retornaRestoDivisao");
         return NULL;
+    }
 
     for(int i = 0; i < tamDividendo; i++){
         resto[i] = dividendo[i];
@@ -169,8 +171,10 @@ int * retornaRestoDivisao(int * dividendo, int tamDividendo, int * divisor, int 
  * @note Caso o array não esteja alocado, o retorno é FALSE.
 */
 bool arrayBinarioEstaZerado(int * array, int tamanho){
-    if(array == NULL)
+    if(array == NULL){
+        Log::erroArrayVazio("arrayBinarioEstaZerado");
         return false;
+    }
 
     for(int i = 0; i < tamanho; i++){
         if(array[i] == 1)

@@ -4,6 +4,7 @@
 #include "../includes/camadaAplicacao.hpp"
 #include "../includes/camadaEnlace.hpp"
 #include "../includes/funcoes.hpp"
+#include "../includes/log.hpp"
 
 /**
  * Construtor da classe CamadaDeTransmissao.
@@ -16,18 +17,31 @@ CamadaDeTransmissao::CamadaDeTransmissao(int * quadro, int tamanho){
 }
 
 /**
+ * Destrutor da classe CamadaDeTransmissao.
+*/
+CamadaDeTransmissao::~CamadaDeTransmissao(){
+    //Libera o quadro se houver memória alocada.
+    if(this->quadro != NULL){
+        delete [] this->quadro;
+        this->quadro = NULL;
+    }
+    
+    //Tamanho com valor inválido.
+    this->tamanho = -1;
+}
+
+/**
  * Muda bits do quadro conforme uma porcentagem de erros.
 */
 void CamadaDeTransmissao::meioDeTransmissao(){
-    int porcentagemErros = 0;
+    int porcentagemErros = PORCENTAGEM_ERRO;
 
     int * fluxoBrutoBytesPontoA = this->quadro; //Recebe o quadro original.
-    int * fluxoBrutoBytesPontoB = (int *) malloc(sizeof(int) * this->tamanho); //Aloca espaço para um novo quadro, o fluxo B.
+    int * fluxoBrutoBytesPontoB = new int[this->tamanho]; //Aloca espaço para um novo quadro, o fluxo B.
 
     //Para cada bit do quadro.
     for(int i = 0; i < tamanho; i++){
         int porcentagemAleatoria = rand()%100 + 1;
-        //cout << "\tPorcentagem aleatoria: " << porcentagemAleatoria << endl;
 
         //Se a porcentagem aleatória for maior que a porcentagem de erros definida.
         if(porcentagemAleatoria >= porcentagemErros)
@@ -36,16 +50,18 @@ void CamadaDeTransmissao::meioDeTransmissao(){
             fluxoBrutoBytesPontoB[i] = !fluxoBrutoBytesPontoA[i]; //Copia o inverso do bit do quadro pro fluxo B.
     }
 
-    free(this->quadro);
+    delete [] this->quadro; //Libera a memória do quadro salvo na camada.
     this->quadro = fluxoBrutoBytesPontoB; //Salva o novo quadro como o fluxo B
 
-    printf("APLICACAO COMUNICACAO - QUADRO: ");    
-    imprimeArrayBits(quadro, tamanho);
+    Log::logInicioCamada("APLICACAO COMUNICACAO", this->quadro, this->tamanho);
 
     //Chama camada de enlace receptora.
-    CamadaEnlace * camadaEnlaceReceptora = new CamadaEnlace(this->quadro, this->tamanho); //A camada de enlace deve ser só uma.
-    camadaEnlaceReceptora->controleErroRecepcao(CamadaEnlace::controle);
+    CamadaEnlace * camadaEnlaceReceptora = new CamadaEnlace(this->quadro, this->tamanho); //Cria a camada de enlace receptora.
+    camadaEnlaceReceptora->camadaEnlaceDadosReceptora(); //Chama a camada de enlace receptora.
 
+    Log::logFimCamada("APLICACAO COMUNICACAO");
+    delete camadaEnlaceReceptora; //Libera memória da camada de enlace receptora.    
+    
 }
 
 /**

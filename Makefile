@@ -2,10 +2,10 @@ CC := g++
 TARGET := prog
 SRC := ./src
 
-all: funcoes meioTransmissao camadaAplicacao camadaEnlace main $(TARGET)
+all: log funcoes meioTransmissao camadaAplicacao camadaEnlace main $(TARGET)
 
-$(TARGET): main.o meioTransmissao.o camadaAplicacao.o camadaEnlace.o funcoes.o  
-	$(CC) -o $(TARGET) main.o meioTransmissao.o camadaAplicacao.o camadaEnlace.o funcoes.o 
+$(TARGET): main.o meioTransmissao.o camadaAplicacao.o camadaEnlace.o funcoes.o log.o
+	$(CC) -o $(TARGET) main.o meioTransmissao.o camadaAplicacao.o camadaEnlace.o funcoes.o log.o
 
 main: $(SRC)/main.cpp
 	$(CC) -c $(SRC)/main.cpp -o main.o
@@ -21,6 +21,9 @@ camadaEnlace: $(SRC)/camadaEnlace.cpp
 
 funcoes: $(SRC)/funcoes.cpp
 	$(CC) -c $(SRC)/funcoes.cpp -o funcoes.o
+
+log: $(SRC)/log.cpp
+	$(CC) -c $(SRC)/log.cpp -o log.o
 
 run: 
 	./$(TARGET)

@@ -6,6 +6,10 @@
 #define GRAU_COEF 31
 //1000 0010 0110 0000 1000 1110 1101 1011 -> x31 + x25 + x22 + x21 + x15 + x11 + x10 + x9 + x7 + x6 + x4 + x3 + x1 + x0
 
+#define CONTROLE_PAR 0
+#define CONTROLE_IMPAR 1
+#define CONTROLE_CRC 2
+
 using namespace std;
 
 class CamadaEnlace{
@@ -22,17 +26,21 @@ class CamadaEnlace{
         void controlaCRCRecepcao();
 
     public:
-        const static int controle = 2;
+        const static int controle = CONTROLE_CRC;
+
         CamadaEnlace(int * quadro, int tamanho);
-        void CamadaEnlaceDadosTransmissora();
+        ~CamadaEnlace();
+        
         void configuraCamadaEnlace(int * quadro, int tamanho);
         int * retornaQuadro();
         int retornaTamanho();
 
         //Transmissão.
+        void camadaEnlaceDadosTransmissora();
         void controleErroTransmissao(int tipoControle);
 
         //Recepção.
+        void camadaEnlaceDadosReceptora();
         void controleErroRecepcao(int tipoControle);   
 };
 
