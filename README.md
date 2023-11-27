@@ -1,4 +1,4 @@
-![Sim.Camada.Enlace](img/banner.png)
+![Sim.Camada.Enlace](img/banner2.png)
 
 <p align="center">
 <img src="https://img.shields.io/badge/Language-C++-blue"/>
