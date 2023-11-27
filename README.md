@@ -29,9 +29,82 @@ O projeto consiste na simulação do funcionamento da camada de enlace por meio 
     - [**X.6. Camada de aplicação receptora;**](#x6-camada-de-aplica%C3%A7%C3%A3o-receptora)
     - [**X.7. Aplicação receptora;**](#x7-aplica%C3%A7%C3%A3o-receptora)
 
+## W. Pré-requisitos.
+* GCC;
+* GNU make;
 
+## **Y. Instalação dos Pré-requisitos.**
 
-## **X. Hierarquia das camadas**.
+### **Y.1. Ubuntu.**
+
+#### **Y.1.1 GCC.**
+
+Para compilar e executar o LiveChat devemos ter o GCC para C++. Primeiro, verifique se o GCC já não está instalado. Execute
+
+```
+$ g++ -v
+```
+
+Caso não haja, execute
+
+```
+$ sudo apt install build-essential
+```
+
+Se o gcc foi instalado com êxito, então ao executar ```$ g++ -v```, deve aparecer a última versão do gcc.
+Caso não esteja você pode forçar a instalação do gcc com
+
+```
+$ sudo apt install g++
+```
+
+#### **Y.1.2. GNU make.**
+
+Caso você tenha instalado o ```build-essential``` o GNU make, também conhecido como Makefile, provavelmente já está instalado. Para descobrir se realmente esté instalado, basta seguir um processo parecido ao do gcc. Execute
+
+```
+$ make -v
+```
+
+Caso não haja, execute
+
+```
+$ sudo apt install make
+```
+
+Se o make foi instalado com êxito, então ao executar ```$ make -v```, deve aparecer a última versão do make.
+
+### **Y.2. Outras Distribuições Linux.**
+
+Para outras distribuições linux teste se não há o gcc e o make já instalado com
+
+```
+$ g++ -v
+```
+
+```
+$ make -v
+```
+
+Caso não tenha um, ou os dois, basta procurar por pacotes equivalentes ao do ubunto. Pois certamente existirá.
+
+## **Z. Guia de execução.**
+
+1. Na pasta raiz do projeto, compile todos os arquivos, executando:
+```
+make all
+```
+
+2. Inicie o programa, executando:
+```
+make run
+```
+
+3. Na execução do programa, escreva uma mensagem e dê enter. O programa responderá com mensagens de status de cada camada, e terminará com a mesma mensagem enviada.
+
+## **X. Fundamentação teórica do projeto**.
+
+Na transmissão de uma mensagem de um computador A ao computador B, a informação passa por diversas camadas, que realizam diferentes funções. A figura abaixo mostra a ordem das camadas da transmissão à recepção.
 
 <p align="center">
     <img width=500 src="img/Figura - hierarquia camadas.png">
