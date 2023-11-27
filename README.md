@@ -1,5 +1,35 @@
 # Camada-de-Enlace
+
+
+## Resumo.
+
 Projeto implementado como segundo trabalho da disciplina Redes de Computadores (SSC0641), ministrada pelo professor Rodolfo Ipolito Meneguette.
+
+O projeto consiste na simulação do funcionamento da camada de enlace por meio da implementação dos protocolos existentes. O programa simula o envio de um dado de um computador A para um computador para um computador B, realizando as devidas conversões entre String, da mensagem a ser enviada, e os bytes e bits a serem verificados pela camada de enlace. 
+
+## Autores.
+
+* **[Beatriz Lomes da Silva](https://github.com/bealomes)**;
+* **[Hugo H. Nakamura](https://github.com/ikuyorih9)**;
+* **[Isaac S. Soares](https://github.com/ISS2718)**;
+* **[João Pedro Gonçalves](https://github.com/JoaoHardline)**;
+* **[Nicholas Estevão P. de O. Rodrigues Bragança](https://github.com/nicholasestevao)**.
+
+## Conteúdo.
+- [**X. Hierarquia das camadas;**](#x-hierarquia-das-camadas)
+    - [**X.1. Aplicação transmissora;**](#x1-aplica%C3%A7%C3%A3o-transmissora)
+    - [**X.2. Camada de aplicação transmissora;**](#x2-camada-de-aplica%C3%A7%C3%A3o-transmissora)
+    - [**X.3. Camada de enlace transmissora;**]()
+        - [**X.3.1. Codificação da transmissão por paridade;**](#x31-codifica%C3%A7%C3%A3o-da-transmiss%C3%A3o-por-paridade)
+        - [**X.3.2. Codificação da transmissão por CRC;**](#x32-codifica%C3%A7%C3%A3o-da-transmiss%C3%A3o-por-crc)
+    - [**X.4. Meio de comunicação;**](#x4-meio-de-comunica%C3%A7%C3%A3o)
+    - [**X.5. Camada de enlace receptora;**](#x5-camada-de-enlace-de-dados-receptora)
+        - [**X.5.1. Decodificação na recepção por paridade;**](#x41-decodifica%C3%A7%C3%A3o-na-recep%C3%A7%C3%A3o-por-paridade)
+        - [**X.5.2. Decodificação na recepção por CRC;**](#x42-decodifica%C3%A7%C3%A3o-na-recep%C3%A7%C3%A3o-por-crc)
+    - [**X.6. Camada de aplicação receptora;**](#x6-camada-de-aplica%C3%A7%C3%A3o-receptora)
+    - [**X.7. Aplicação receptora;**](#x7-aplica%C3%A7%C3%A3o-receptora)
+
+
 
 ## **X. Hierarquia das camadas**.
 
@@ -181,7 +211,7 @@ Após esse processo, a camada de enlace de dados receptora é chamada.
 
 A **camada de enlace de dados receptora** obtém o quadro de dados binário codificado e o decodifica, através do controle de erro. Da mesma forma que na transmissão, a camada receptora faz o controle de **paridade** e **CRC**. 
 
-#### **X.4.1. Decodificação na recepção por paridade.**
+#### **X.5.1. Decodificação na recepção por paridade.**
 
 A decodificação por paridade é simples, basta contar a quantidade de bits 1 e comparar com o bit de paridade. Dessa forma, precisa-se verificar o tipo de **decodificação**, a **paridade** do quadro e o **bit de paridade**. A relação entre elas e o erro é dada por uma lógica XOR, conforme a tabela abaixo.
 <p align=center> 
@@ -236,7 +266,7 @@ void controlaParidadeRecepcao(bool controlePar){
     <b>Código x.6: decodificação do quadro por paridade.</b>
 </p>
 
-#### **X.4.2. Decodificação na recepção por CRC.**
+#### **X.5.2. Decodificação na recepção por CRC.**
 
 A **decodificação na recepção por CRC** acontece verificando se o quadro codificado é divisível, em módulo 2, pelo polinômio gerador (1000 0010 0110 0000 1000 1110 1101 1011). Se o resto da divisão é zero, o quadro não tem erro, sendo necessário apenas retirar os últimos 31 bits do quadro. Caso contrário, o quadro está com o erro.
 
