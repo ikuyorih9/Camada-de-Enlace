@@ -16,28 +16,28 @@ O projeto consiste na simulação do funcionamento da camada de enlace por meio 
 * **[Nicholas Estevão P. de O. Rodrigues Bragança](https://github.com/nicholasestevao)**.
 
 ## Conteúdo.
-- [**X. Hierarquia das camadas;**](#x-hierarquia-das-camadas)
-    - [**X.1. Aplicação transmissora;**](#x1-aplica%C3%A7%C3%A3o-transmissora)
-    - [**X.2. Camada de aplicação transmissora;**](#x2-camada-de-aplica%C3%A7%C3%A3o-transmissora)
-    - [**X.3. Camada de enlace transmissora;**]()
-        - [**X.3.1. Codificação da transmissão por paridade;**](#x31-codifica%C3%A7%C3%A3o-da-transmiss%C3%A3o-por-paridade)
-        - [**X.3.2. Codificação da transmissão por CRC;**](#x32-codifica%C3%A7%C3%A3o-da-transmiss%C3%A3o-por-crc)
-    - [**X.4. Meio de comunicação;**](#x4-meio-de-comunica%C3%A7%C3%A3o)
-    - [**X.5. Camada de enlace receptora;**](#x5-camada-de-enlace-de-dados-receptora)
-        - [**X.5.1. Decodificação na recepção por paridade;**](#x41-decodifica%C3%A7%C3%A3o-na-recep%C3%A7%C3%A3o-por-paridade)
-        - [**X.5.2. Decodificação na recepção por CRC;**](#x42-decodifica%C3%A7%C3%A3o-na-recep%C3%A7%C3%A3o-por-crc)
-    - [**X.6. Camada de aplicação receptora;**](#x6-camada-de-aplica%C3%A7%C3%A3o-receptora)
-    - [**X.7. Aplicação receptora;**](#x7-aplica%C3%A7%C3%A3o-receptora)
+- [**4. Hierarquia das camadas;**](#x-hierarquia-das-camadas)
+    - [**4.1. Aplicação transmissora;**](#x1-aplica%C3%A7%C3%A3o-transmissora)
+    - [**4.2. Camada de aplicação transmissora;**](#x2-camada-de-aplica%C3%A7%C3%A3o-transmissora)
+    - [**4.3. Camada de enlace transmissora;**]()
+        - [**4.3.1. Codificação da transmissão por paridade;**](#x31-codifica%C3%A7%C3%A3o-da-transmiss%C3%A3o-por-paridade)
+        - [**4.3.2. Codificação da transmissão por CRC;**](#x32-codifica%C3%A7%C3%A3o-da-transmiss%C3%A3o-por-crc)
+    - [**4.4. Meio de comunicação;**](#x4-meio-de-comunica%C3%A7%C3%A3o)
+    - [**4.5. Camada de enlace receptora;**](#x5-camada-de-enlace-de-dados-receptora)
+        - [**4.5.1. Decodificação na recepção por paridade;**](#x41-decodifica%C3%A7%C3%A3o-na-recep%C3%A7%C3%A3o-por-paridade)
+        - [**4.5.2. Decodificação na recepção por CRC;**](#x42-decodifica%C3%A7%C3%A3o-na-recep%C3%A7%C3%A3o-por-crc)
+    - [**4.6. Camada de aplicação receptora;**](#x6-camada-de-aplica%C3%A7%C3%A3o-receptora)
+    - [**4.7. Aplicação receptora;**](#x7-aplica%C3%A7%C3%A3o-receptora)
 
-## W. Pré-requisitos.
+## 1. Pré-requisitos.
 * GCC;
 * GNU make;
 
-## **Y. Instalação dos Pré-requisitos.**
+## **2. Instalação dos Pré-requisitos.**
 
-### **Y.1. Ubuntu.**
+### **2.1. Ubuntu.**
 
-#### **Y.1.1 GCC.**
+#### **2.1.1 GCC.**
 
 Para compilar e executar o LiveChat devemos ter o GCC para C++. Primeiro, verifique se o GCC já não está instalado. Execute
 
@@ -58,7 +58,7 @@ Caso não esteja você pode forçar a instalação do gcc com
 $ sudo apt install g++
 ```
 
-#### **Y.1.2. GNU make.**
+#### **2.1.2. GNU make.**
 
 Caso você tenha instalado o ```build-essential``` o GNU make, também conhecido como Makefile, provavelmente já está instalado. Para descobrir se realmente esté instalado, basta seguir um processo parecido ao do gcc. Execute
 
@@ -74,7 +74,7 @@ $ sudo apt install make
 
 Se o make foi instalado com êxito, então ao executar ```$ make -v```, deve aparecer a última versão do make.
 
-### **Y.2. Outras Distribuições Linux.**
+### **2.2. Outras Distribuições Linux.**
 
 Para outras distribuições linux teste se não há o gcc e o make já instalado com
 
@@ -88,7 +88,7 @@ $ make -v
 
 Caso não tenha um, ou os dois, basta procurar por pacotes equivalentes ao do ubunto. Pois certamente existirá.
 
-## **Z. Guia de execução.**
+## **3. Guia de execução.**
 
 1. Na pasta raiz do projeto, compile todos os arquivos, executando:
 ```
@@ -102,7 +102,7 @@ make run
 
 3. Na execução do programa, escreva uma mensagem e dê enter. O programa responderá com mensagens de status de cada camada, e terminará com a mesma mensagem enviada.
 
-## **X. Fundamentação teórica do projeto**.
+## **4. Fundamentação teórica do projeto**.
 
 Na transmissão de uma mensagem de um computador A ao computador B, a informação passa por diversas camadas, que realizam diferentes funções. A figura abaixo mostra a ordem das camadas da transmissão à recepção.
 
@@ -113,7 +113,7 @@ Na transmissão de uma mensagem de um computador A ao computador B, a informaç�
     <b>Figura x: ordem das camadas.</b>
 </p>
 
-### **X.1. Aplicação transmissora**.
+### **4.1. Aplicação transmissora**.
 
 A **aplicação transmissora** é a camada mais externa da transmissão, que está em contato com o usuário. Ela recebe uma mensagem dele e passa a informação para a próxima camada.
 
@@ -130,10 +130,10 @@ void aplicacaoTransmissora(){
 }
 ```
 <p align=center> 
-    <b>Código X.1. aplicação transmissora.</b>
+    <b>Código 4.1. aplicação transmissora.</b>
 </p>
 
-### **X.2. Camada de aplicação transmissora.**
+### **4.2. Camada de aplicação transmissora.**
 
 A **camada de aplicação transmissora** obtém a mensagem vinda da aplicação transmissora e realiza o **enquadramento**, que consiste em separar a mensagem em vários segmentos binários para envio. No caso dessa implementação, apenas um quadro é formado.
 
@@ -153,14 +153,14 @@ void camadaAplicacaoTransmissora(string mensagem){
 }
 ```
 <p align=center> 
-    <b>Código x.2. camada de aplicação transmissora.</b>
+    <b>Código 4.2. camada de aplicação transmissora.</b>
 </p>
 
-### **X.3. Camada de enlace de dados transmissora.**
+### **4.3. Camada de enlace de dados transmissora.**
 
 A **camada de enlace de dados transmissora** é chamada pela camada de aplicação transmissora. Ela começa realizando o *controle de erro para transmmissão* do quadro, que consiste na codificação do quadro original em um novo com bits anexados ao seu fim. A quantidade e o valor dos bits anexados depende do tipo de controle, que pode ser por **paridade** ou **CRC**.
 
-#### **X.3.1. Codificação da transmissão por paridade.**
+#### **4.3.1. Codificação da transmissão por paridade.**
 
 O controle da transmissão por paridade consiste em *adicionar um único bit ao final do quadro*, funcionando como um booleano. 
 
@@ -177,7 +177,7 @@ O bit de paridade, anexado ao final do quadro, depende do tipo de codificação 
 </p>
 
 <p align=center> 
-    <b>Tabela x.1: tabela-verdade do controle de paridade para transmissão.</b>
+    <b>Tabela 4.1: tabela-verdade do controle de paridade para transmissão.</b>
 </p>
 
 
@@ -203,13 +203,13 @@ void controlaParidadeTransmissao(bool controlePar){
 }
 ```
 <p align=center> 
-    <b>Código x.3: função de controle de paridade na transmissão.</b>
+    <b>Código 4.3: função de controle de paridade na transmissão.</b>
 </p>
 
 
 Observe que o booleano `controlePar` corresponde ao "Codificação" da tabela, enquanto a função `retornaSePar()` obtém a informação da paridade de 1's.
 
-#### **X.3.2. Codificação da transmissão por CRC.**
+#### **4.3.2. Codificação da transmissão por CRC.**
 
 O controle da transmissão por CRC consiste em transformar o valor do quadro em um valor divisível por um **polinômio gerador**. Como o quadro é binário, o polinômio gerador é convertido em um número binário considerando os seus coeficientes.
 
@@ -251,12 +251,12 @@ for(int i = 0; i < tamanho; i++){
 
 ```
 <p align=center> 
-    <b>Código x.4: função de controle CRC na transmissão.</b>
+    <b>Código 4.4: função de controle CRC na transmissão.</b>
 </p>
 
 Por fim, a a camada de enlace de dados de transmissão chama o **meio de comunicação**.
 
-### **X.4. Meio de comunicação**.
+### **4.4. Meio de comunicação**.
 
 O **meio de comunicação** passa o quadro da camada de enlace transmissora para a camada de enlace receptora. É nesse ponto que pode ocorrer erros na mensagem. Assim, dada uma porcentagem limiar para erros `porcentagemErros`, a simulação do meio de comunicação gera um número aleatório para cada bit do quadro. Se o valor for maior que o limiar, o meio transmite corretamente o bit. Caso contrário, o meio inverte o bit.
 
@@ -275,16 +275,16 @@ for(int i = 0; i < tamanho; i++){
 }
 ```
 <p align=center> 
-    <b>Código x.5: simulação de erro nos bits do quadro.</b>
+    <b>Código 4.5: simulação de erro nos bits do quadro.</b>
 </p>
 
 Após esse processo, a camada de enlace de dados receptora é chamada.
 
-### **X.5. Camada de enlace de dados receptora.**
+### **4.5. Camada de enlace de dados receptora.**
 
 A **camada de enlace de dados receptora** obtém o quadro de dados binário codificado e o decodifica, através do controle de erro. Da mesma forma que na transmissão, a camada receptora faz o controle de **paridade** e **CRC**. 
 
-#### **X.5.1. Decodificação na recepção por paridade.**
+#### **4.5.1. Decodificação na recepção por paridade.**
 
 A decodificação por paridade é simples, basta contar a quantidade de bits 1 e comparar com o bit de paridade. Dessa forma, precisa-se verificar o tipo de **decodificação**, a **paridade** do quadro e o **bit de paridade**. A relação entre elas e o erro é dada por uma lógica XOR, conforme a tabela abaixo.
 <p align=center> 
@@ -303,7 +303,7 @@ A decodificação por paridade é simples, basta contar a quantidade de bits 1 e
 </p>
 
 <p align=center> 
-    <b>Tabela x.2: tabela-verdade do controle de paridade para recepção.</b>
+    <b>Tabela 4.2: tabela-verdade do controle de paridade para recepção.</b>
 </p>
 
 O código da decodificação por paridade é dado por:
@@ -336,10 +336,10 @@ void controlaParidadeRecepcao(bool controlePar){
 }
 ```
 <p align=center> 
-    <b>Código x.6: decodificação do quadro por paridade.</b>
+    <b>Código 4.6: decodificação do quadro por paridade.</b>
 </p>
 
-#### **X.5.2. Decodificação na recepção por CRC.**
+#### **4.5.2. Decodificação na recepção por CRC.**
 
 A **decodificação na recepção por CRC** acontece verificando se o quadro codificado é divisível, em módulo 2, pelo polinômio gerador (1000 0010 0110 0000 1000 1110 1101 1011). Se o resto da divisão é zero, o quadro não tem erro, sendo necessário apenas retirar os últimos 31 bits do quadro. Caso contrário, o quadro está com o erro.
 
@@ -366,10 +366,10 @@ this->quadro = quadro;
 this->tamanho = tamanho;
 ```
 <p align=center> 
-    <b>Código x.7: decodificação do código por CRC.</b>
+    <b>Código 4.7: decodificação do código por CRC.</b>
 </p>
 
-### **X.6. Camada de aplicação receptora.**
+### **4.6. Camada de aplicação receptora.**
 
 A **camada de aplicação receptora** recebe o quadro já decodificado e o transforma de volta a uma mensagem, para poder ser enviada à aplicação receptora.
 
@@ -387,9 +387,9 @@ void camadaAplicacaoReceptora(int * quadro, int tamanho){
 }
 ```
 <p align=center> 
-    <b>Código X.8: camada de aplicação receptora.</b>
+    <b>Código 4.8: camada de aplicação receptora.</b>
 </p>
 
-### **X.7. Aplicação receptora.**
+### **4.7. Aplicação receptora.**
 
 A última camada, a **aplicação receptora**, obtém a mensagem vinda da camada inferior e a transmite para o usuário final.
