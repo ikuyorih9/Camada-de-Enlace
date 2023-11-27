@@ -1,5 +1,4 @@
-# Camada-de-Enlace
-
+# Simulação da camada de enlace.
 
 ## Resumo.
 
@@ -31,7 +30,7 @@ O projeto consiste na simulação do funcionamento da camada de enlace por meio 
         - [**4.5.2. Decodificação na recepção por CRC;**](#452-decodifica%C3%A7%C3%A3o-na-recep%C3%A7%C3%A3o-por-crc)
     - [**4.6. Camada de aplicação receptora;**](#46-camada-de-aplica%C3%A7%C3%A3o-receptora)
     - [**4.7. Aplicação receptora;**](#47-aplica%C3%A7%C3%A3o-receptora)
-
+- [**5. Tecnologias;**](#5-tecnologias)
 ---
 
 ## 1. Pré-requisitos.
