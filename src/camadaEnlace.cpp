@@ -243,18 +243,8 @@ void CamadaEnlace::controlaParidadeRecepcao(bool controlePar){
 
     bool bitParidade = (bool) this->quadro[tamanho - 1]; //Obtém o último bit do quadro, indicador de paridade.
 
-    //controlePar   paridade  bitParidade   Erro
-    //0(ímpar)      0(ímpar)  0(ímpar)      0             
-    //0(ímpar)      0(ímpar)  1(par)        1
-    //0(ímpar)      1(par)    0(ímpar)      1
-    //0(ímpar)      1(par)    1(par)        0 
-    //1(par)        0(ímpar)  0(par)        1             
-    //1(par)        0(ímpar)  1(ímpar)      0
-    //1(par)        1(par)    0(par)        0
-    //1(par)        1(par)    1(ímpar)      1  
-
+    //Verifica se o quadro está com erro.
     bool erroQuadro = (bool)(controlePar ^ paridade ^ bitParidade);
-
     if(erroQuadro){
         Log::erroQuadro("BIT DE PARIDADE INCORRETO.");
         exit(-1);
