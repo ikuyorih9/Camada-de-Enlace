@@ -16,18 +16,23 @@ O projeto consiste na simulação do funcionamento da camada de enlace por meio 
 * **[Nicholas Estevão P. de O. Rodrigues Bragança](https://github.com/nicholasestevao)**.
 
 ## Conteúdo.
-- [**4. Hierarquia das camadas;**](#x-hierarquia-das-camadas)
-    - [**4.1. Aplicação transmissora;**](#x1-aplica%C3%A7%C3%A3o-transmissora)
-    - [**4.2. Camada de aplicação transmissora;**](#x2-camada-de-aplica%C3%A7%C3%A3o-transmissora)
-    - [**4.3. Camada de enlace transmissora;**]()
-        - [**4.3.1. Codificação da transmissão por paridade;**](#x31-codifica%C3%A7%C3%A3o-da-transmiss%C3%A3o-por-paridade)
-        - [**4.3.2. Codificação da transmissão por CRC;**](#x32-codifica%C3%A7%C3%A3o-da-transmiss%C3%A3o-por-crc)
-    - [**4.4. Meio de comunicação;**](#x4-meio-de-comunica%C3%A7%C3%A3o)
-    - [**4.5. Camada de enlace receptora;**](#x5-camada-de-enlace-de-dados-receptora)
-        - [**4.5.1. Decodificação na recepção por paridade;**](#x41-decodifica%C3%A7%C3%A3o-na-recep%C3%A7%C3%A3o-por-paridade)
-        - [**4.5.2. Decodificação na recepção por CRC;**](#x42-decodifica%C3%A7%C3%A3o-na-recep%C3%A7%C3%A3o-por-crc)
-    - [**4.6. Camada de aplicação receptora;**](#x6-camada-de-aplica%C3%A7%C3%A3o-receptora)
-    - [**4.7. Aplicação receptora;**](#x7-aplica%C3%A7%C3%A3o-receptora)
+- [**1. Pré-requisitos;**](#1-pr%C3%A9-requisitos)
+- [**2. Instalação dos Pré-requisitos;**](#2-instala%C3%A7%C3%A3o-dos-pr%C3%A9-requisitos)
+- [**3. Guia de execução;**](#3-guia-de-execu%C3%A7%C3%A3o)
+- [**4. Fundamentação teórica do projeto;**](#4-fundamenta%C3%A7%C3%A3o-te%C3%B3rica-do-projeto)
+    - [**4.1. Aplicação transmissora;**](#41-aplica%C3%A7%C3%A3o-transmissora)
+    - [**4.2. Camada de aplicação transmissora;**](#42-camada-de-aplica%C3%A7%C3%A3o-transmissora)
+    - [**4.3. Camada de enlace transmissora;**](#43-camada-de-enlace-de-dados-transmissora)
+        - [**4.3.1. Codificação da transmissão por paridade;**](#431-codifica%C3%A7%C3%A3o-da-transmiss%C3%A3o-por-paridade)
+        - [**4.3.2. Codificação da transmissão por CRC;**](#432-codifica%C3%A7%C3%A3o-da-transmiss%C3%A3o-por-crc)
+    - [**4.4. Meio de comunicação;**](#44-meio-de-comunica%C3%A7%C3%A3o)
+    - [**4.5. Camada de enlace receptora;**](#45-camada-de-enlace-de-dados-receptora)
+        - [**4.5.1. Decodificação na recepção por paridade;**](#451-decodifica%C3%A7%C3%A3o-na-recep%C3%A7%C3%A3o-por-paridade)
+        - [**4.5.2. Decodificação na recepção por CRC;**](#452-decodifica%C3%A7%C3%A3o-na-recep%C3%A7%C3%A3o-por-crc)
+    - [**4.6. Camada de aplicação receptora;**](#46-camada-de-aplica%C3%A7%C3%A3o-receptora)
+    - [**4.7. Aplicação receptora;**](#47-aplica%C3%A7%C3%A3o-receptora)
+
+---
 
 ## 1. Pré-requisitos.
 * GCC;
@@ -393,3 +398,19 @@ void camadaAplicacaoReceptora(int * quadro, int tamanho){
 ### **4.7. Aplicação receptora.**
 
 A última camada, a **aplicação receptora**, obtém a mensagem vinda da camada inferior e a transmite para o usuário final.
+
+## **5. Tecnologias.**
+
+As seguintes ferramentas foram usadas na construção do projeto:
+
+- [C++](https://isocpp.org/)
+- [GCC](https://gcc.gnu.org/)
+- [GNU make](https://www.gnu.org/software/make/manual/make.html)
+
+---
+
+<p align="center">
+    <a href="https://github.com/ikuyorih9/Camada-de-Enlace/tree/main/img/onions.gif">
+        <img width=500 src="img/onions.gif">
+    </a>
+</p>
