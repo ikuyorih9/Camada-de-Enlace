@@ -26,7 +26,7 @@ class CamadaEnlace{
         void controlaCRCRecepcao();
 
     public:
-        const static int controle = CONTROLE_CRC;
+        const static int controle = CONTROLE_IMPAR;
 
         CamadaEnlace(int * quadro, int tamanho);
         ~CamadaEnlace();

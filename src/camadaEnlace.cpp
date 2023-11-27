@@ -175,10 +175,7 @@ void CamadaEnlace::controlaParidadeTransmissao(bool controlePar){
     memcpy(quadro, this->quadro, sizeof(int) * tamanho); //Copia o quadro sem paridade para o quadro com paridade.
 
     //Se o quadro tiver um número par de '1's, ele deve ter o último bit 0 na paridade par e 1 na paridade ímpar. Vice-versa.
-    if(controlePar)
-        quadro[tamanho] = (int) !retornaSePar(this->quadro, tamanho); //Põe o bit de paridade (par) ao fim da mensagem.
-    else
-        quadro[tamanho] = (int) retornaSePar(this->quadro, tamanho); //Põe o bit de paridade (ímpar) ao fim da mensagem.
+    quadro[tamanho] = (int)(controlePar ^ retornaSePar(this->quadro, tamanho));
 
     delete [] this->quadro; //Libera memória alocada para o último quadro.
 
