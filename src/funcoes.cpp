@@ -15,9 +15,9 @@ using namespace std;
 */
 int * stringParaBits(string mensagem){
     int * bits = new (nothrow) int[mensagem.size()*8];
-    if(bits == NULL){
+    if(bits == nullptr){
         Log::erroAlocacao("stringParaBits");
-        return NULL;
+        return nullptr;
     }
 
     int * teste = bits;
@@ -41,7 +41,7 @@ int * stringParaBits(string mensagem){
  * @note O tamanho precisa ser um múltiplo de 8 para que seja possível a conversão para bytes.
 */
 string bitsParaString(int * bits, int tamanho){
-    if(bits == NULL){
+    if(bits == nullptr){
         Log::erroArrayVazio("bitsParaString");
         return "";
     }
@@ -68,7 +68,7 @@ string bitsParaString(int * bits, int tamanho){
  * @param tam o tamanho do array de bits.
 */
 void imprimeArrayBits(int * bits, int tam){
-    if(bits == NULL){
+    if(bits == nullptr){
         Log::erroArrayVazio("imprimeArrayBits");
         return;
     }
@@ -85,7 +85,7 @@ void imprimeArrayBits(int * bits, int tam){
  * @return tamanho útil da sequência, sem os zeros à direita.
 */
 int retornaTamanhoUtilBits(int * bits, int tamanhoBits){
-    if(bits == NULL)
+    if(bits == nullptr)
         return -1;
 
     int tam = 1;
@@ -149,9 +149,9 @@ void divisaoBinaria(int * dividendo, int * divisor, int tamDividendo, int tamDiv
 int * retornaRestoDivisao(int * dividendo, int tamDividendo, int * divisor, int tamDivisor){
     //Aloca dinamicamente o resto e verifica se foi alocado corretamente.
     int * resto = new (nothrow) int[tamDividendo];
-    if(resto == NULL){
+    if(resto == nullptr){
         Log::erroAlocacao("retornaRestoDivisao");
-        return NULL;
+        return nullptr;
     }
 
     for(int i = 0; i < tamDividendo; i++){
@@ -171,7 +171,7 @@ int * retornaRestoDivisao(int * dividendo, int tamDividendo, int * divisor, int 
  * @note Caso o array não esteja alocado, o retorno é FALSE.
 */
 bool arrayBinarioEstaZerado(int * array, int tamanho){
-    if(array == NULL){
+    if(array == nullptr){
         Log::erroArrayVazio("arrayBinarioEstaZerado");
         return false;
     }

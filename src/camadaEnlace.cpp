@@ -38,7 +38,7 @@ CamadaEnlace::~CamadaEnlace(){
 */
 bool CamadaEnlace::retornaSePar(int * quadro, int tamanho){
     //Se o quadro enviado não está alocado, retorna FALSE.
-    if(quadro == NULL){
+    if(quadro == nullptr){
         Log::erroArrayVazio("retornaSePar");
         return false;
     }

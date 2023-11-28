@@ -21,9 +21,9 @@ CamadaDeTransmissao::CamadaDeTransmissao(int * quadro, int tamanho){
 */
 CamadaDeTransmissao::~CamadaDeTransmissao(){
     //Libera o quadro se houver memória alocada.
-    if(this->quadro != NULL){
+    if(this->quadro != nullptr){
         delete [] this->quadro;
-        this->quadro = NULL;
+        this->quadro = nullptr;
     }
     
     //Tamanho com valor inválido.
