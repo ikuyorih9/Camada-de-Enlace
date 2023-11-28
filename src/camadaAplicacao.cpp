@@ -33,7 +33,7 @@ void camadaAplicacaoTransmissora(string mensagem){
     Log::logInicioCamada("CAMADA DE APLICACAO TRANSMISSORA", quadro, tamanho);
 
     //Envia informações para a próxima camada: a camada de enlace transmissora.
-    CamadaEnlace * camadaEnlaceTransmissora = new CamadaEnlace(quadro, tamanho); //Cria uma camada de enlace com o quadro e o tamanho.
+    CamadaEnlace * camadaEnlaceTransmissora = new CamadaEnlace(&quadro, tamanho); //Cria uma camada de enlace com o quadro e o tamanho.
     camadaEnlaceTransmissora->camadaEnlaceDadosTransmissora();
 
     Log::logFimCamada("CAMADA DE APLICACAO TRANSMISSORA");

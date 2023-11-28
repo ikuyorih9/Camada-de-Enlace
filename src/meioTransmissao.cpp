@@ -21,9 +21,9 @@ CamadaDeTransmissao::CamadaDeTransmissao(int * quadro, int tamanho){
 */
 CamadaDeTransmissao::~CamadaDeTransmissao(){
     //Libera o quadro se houver memória alocada.
-    if(this->quadro != NULL){
+    if(this->quadro != nullptr){
         delete [] this->quadro;
-        this->quadro = NULL;
+        this->quadro = nullptr;
     }
     
     //Tamanho com valor inválido.
@@ -50,13 +50,12 @@ void CamadaDeTransmissao::meioDeTransmissao(){
             fluxoBrutoBytesPontoB[i] = !fluxoBrutoBytesPontoA[i]; //Copia o inverso do bit do quadro pro fluxo B.
     }
 
-    delete [] this->quadro; //Libera a memória do quadro salvo na camada.
     this->quadro = fluxoBrutoBytesPontoB; //Salva o novo quadro como o fluxo B
 
     Log::logInicioCamada("APLICACAO COMUNICACAO", this->quadro, this->tamanho);
 
     //Chama camada de enlace receptora.
-    CamadaEnlace * camadaEnlaceReceptora = new CamadaEnlace(this->quadro, this->tamanho); //Cria a camada de enlace receptora.
+    CamadaEnlace * camadaEnlaceReceptora = new CamadaEnlace(&(this->quadro), this->tamanho); //Cria a camada de enlace receptora.
     camadaEnlaceReceptora->camadaEnlaceDadosReceptora(); //Chama a camada de enlace receptora.
 
     Log::logFimCamada("APLICACAO COMUNICACAO");

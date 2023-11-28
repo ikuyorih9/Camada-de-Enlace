@@ -14,10 +14,11 @@ using namespace std;
 
 class CamadaEnlace{
     private:
+        int **ptr_quadro;
         int * quadro;
         int tamanho;
 
-        bool retornaSePar(int * quadro, int tamanho);
+        bool retornaSePar(int *quadro, int tamanho);
         //Transmissão.
         void controlaParidadeTransmissao(bool controlePar);
         void controlaCRCTransmissao();
@@ -28,7 +29,7 @@ class CamadaEnlace{
     public:
         const static int controle = CONTROLE_IMPAR;
 
-        CamadaEnlace(int * quadro, int tamanho);
+        CamadaEnlace(int **ptr_quadro, int tamanho);
         ~CamadaEnlace();
         
         void configuraCamadaEnlace(int * quadro, int tamanho);
