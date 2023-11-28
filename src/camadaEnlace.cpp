@@ -11,8 +11,9 @@
  * @param quadro array com os bits dos quadros.
  * @param tamanho tamanho do array.
 */
-CamadaEnlace::CamadaEnlace(int * quadro, int tamanho){
-    this->quadro = quadro;
+CamadaEnlace::CamadaEnlace(int **ptr_quadro, int tamanho){
+    this->ptr_quadro = ptr_quadro;
+    this->quadro = *(this->ptr_quadro);
     this->tamanho = tamanho;
 }
 
@@ -21,9 +22,10 @@ CamadaEnlace::CamadaEnlace(int * quadro, int tamanho){
 */
 CamadaEnlace::~CamadaEnlace(){
     //Libera o quadro se houver memória alocada.
-    if(this->quadro != NULL){
-        delete []this->quadro;
-        this->quadro = NULL;
+    if(this->quadro != nullptr){
+        delete [] this->quadro;
+        this->quadro = nullptr;
+        *(this->ptr_quadro) = nullptr;
     }
     
     //Tamanho com valor inválido.
@@ -92,7 +94,7 @@ void CamadaEnlace::camadaEnlaceDadosTransmissora(){
     controleErroTransmissao(controle);
 
     //Obtém o quadro e o tamanho.
-    int * quadro = this->quadro;
+    int *quadro = this->quadro;
     int tamanho = this->tamanho;
 
     //Envia dados para a camada de comunicação.
@@ -101,7 +103,6 @@ void CamadaEnlace::camadaEnlaceDadosTransmissora(){
 
     Log::logFimCamada("CAMADA DE ENLACE TRANSMISSORA");
     delete camadaTransmissao;
-    
 }
 
 /**
