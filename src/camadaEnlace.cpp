@@ -197,10 +197,6 @@ void CamadaEnlace::camadaEnlaceDadosReceptora(){
     //Realiza o controle de erro.
     controleErroRecepcao(controle);
 
-    //Obtém o quadro e o tamanho.
-    int * quadro = this->quadro;
-    int tamanho = this->tamanho;
-
     //Chama a próxima camada.
     camadaAplicacaoReceptora(this->quadro, this->tamanho);
 
