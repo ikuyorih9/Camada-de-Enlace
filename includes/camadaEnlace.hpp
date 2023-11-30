@@ -2,9 +2,9 @@
 #define __CAMADA_ENLACE_H__
 
 #define polinomioCRC 2187366107 //0x82608EDB IEE 802.3 polynomial standart.
-#define COEF_CRC {1,0,0,0,0,0,1,0,0,1,1,0,0,0,0,0,1,0,0,0,1,1,1,0,1,1,0,1,1,0,1,1}
-#define GRAU_COEF 31
-//1000 0010 0110 0000 1000 1110 1101 1011 -> x31 + x25 + x22 + x21 + x15 + x11 + x10 + x9 + x7 + x6 + x4 + x3 + x1 + x0
+#define COEF_CRC {1,0,0,0,0,0,1,0,0,1,1,0,0,0,0,0,1,0,0,0,1,1,1,0,1,1,0,1,1,0,1,1,1}
+#define GRAU_COEF 32
+//100000100110000010001110110110111 -> x32 + x26 + x23 + x22 + x16 + x12 + x11 + x10 + x8 + x7 + x5 + x4 + x2 + x1 + x0
 
 #define CONTROLE_PAR 0
 #define CONTROLE_IMPAR 1
@@ -27,7 +27,7 @@ class CamadaEnlace{
         void controlaCRCRecepcao();
 
     public:
-        const static int controle = CONTROLE_IMPAR;
+        const static int controle = CONTROLE_CRC;
 
         CamadaEnlace(int **ptr_quadro, int tamanho);
         ~CamadaEnlace();

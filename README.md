@@ -223,16 +223,16 @@ O controle da transmissão por CRC consiste em transformar o valor do quadro em 
 
 O polinômio gerador utilizado é escolhido conforme o padrão IEE 802.3, ou seja
 
-> x<sup>31</sup> + x<sup>25</sup> + x<sup>22</sup> + x<sup>21</sup> + x<sup>15</sup> + x<sup>11</sup> + x<sup>10</sup> + x<sup>9</sup> + x<sup>7</sup> + x<sup>6</sup> + x<sup>4</sup> + x<sup>3</sup> + x<sup>1</sup> + x<sup>0</sup>
+> x<sup>32</sup> + x<sup>26</sup> + x<sup>23</sup> + x<sup>22</sup> + x<sup>16</sup> + x<sup>12</sup> + x<sup>11</sup> + x<sup>10</sup> + x<sup>8</sup> + x<sup>7</sup> + x<sup>5</sup> + x<sup>4</sup> + x<sup>2</sup> + x<sup>1</sup> + x<sup>0</sup>
 
-que, em binário se torna o número de 32 bits:
+que, em binário se torna o número de 33 bits:
 
-> 1000 0010 0110 0000 1000 1110 1101 1011
+> 100000100110000010001110110110111
 
-Para transformar o quadro em um número divisível por 1000 0010 0110 0000 1000 1110 1101 1011, é preciso:
+Para transformar o quadro em um número divisível por 100000100110000010001110110110111, é preciso:
 
 1. Anexar 31 bits 0 ao final do quadro;
-2. Realizar a divisão binária de módulo 2 (XOR) entre o quadro e o número 1000 0010 0110 0000 1000 1110 1101 1011;
+2. Realizar a divisão binária de módulo 2 (XOR) entre o quadro e o número 100000100110000010001110110110111;
 3. Subtrair o quadro pelo resto da divisão.
 
 Assim, o algorítimo dessa codificação se dá por
@@ -349,7 +349,7 @@ void controlaParidadeRecepcao(bool controlePar){
 
 #### **4.5.2. Decodificação na recepção por CRC.**
 
-A **decodificação na recepção por CRC** acontece verificando se o quadro codificado é divisível, em módulo 2, pelo polinômio gerador (1000 0010 0110 0000 1000 1110 1101 1011). Se o resto da divisão é zero, o quadro não tem erro, sendo necessário apenas retirar os últimos 31 bits do quadro. Caso contrário, o quadro está com o erro.
+A **decodificação na recepção por CRC** acontece verificando se o quadro codificado é divisível, em módulo 2, pelo polinômio gerador (100000100110000010001110110110111). Se o resto da divisão é zero, o quadro não tem erro, sendo necessário apenas retirar os últimos 31 bits do quadro. Caso contrário, o quadro está com o erro.
 
 Dessa forma, o algoritmo é dado por:
 
